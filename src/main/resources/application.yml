@@ -1,0 +1,29 @@
+server:
+  port: 8071
+spring:
+  application:
+    name: "configserver"
+
+# Whenever We are trying to use a classpath to store all our configurations, we need to make sure we are activating this native profile
+#  native profiles we should activate only when we are using the approaches like classpath location and file system location
+#  If you are using GitHub repo, we need to activate a profile with the name git. Note: This is most recommended approach.
+  profiles:
+#    active: native
+    active: git
+  cloud:
+    config:
+      server:
+#        native:
+#          search-locations: "classpath:/config"
+#          search-locations: "file:///C://Users//eazybank//documents//config"
+        git:
+          uri: "https://github.com/SaadAli777/eazybank-config.git"
+          default-label: main
+          timeout: 5
+          clone-on-start: true
+          force-pull: true
+encrypt:
+  key: "45D81EC1EF61DF9AD8D3E5BB397F9"
+
+
+
